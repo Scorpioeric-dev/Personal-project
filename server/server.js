@@ -7,6 +7,10 @@ const {SERVER_PORT, CONNECTION_STRING,SESSION_SECRET} = process.env
 
 const app = express()
 
+//endpoints
+
+
+
 
 
 app.use(express.json())
