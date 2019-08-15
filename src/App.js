@@ -3,7 +3,8 @@ import './App.css';
 import routes from './routes'
 import Header from './Header/Header'
 // import Dashboard from './Dashboard/Dashboard'
-// import UploadVid from './UploadVid/Upload'
+import UploadVid from './UploadVid/UploadVid'
+import Video from './Video/Video'
 
 function App() {
 
@@ -11,8 +12,10 @@ function App() {
     <div className="App">
     <Header/> 
     {routes}
-      
-    </div>
+     <Video/>
+    
+
+     </div>
   );
 }
 

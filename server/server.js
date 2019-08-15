@@ -3,12 +3,9 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const {SERVER_PORT, CONNECTION_STRING,SESSION_SECRET} = process.env
-
+const ctrl = require('./controller')
 
 const app = express()
-
-//endpoints
-
 
 
 
@@ -24,5 +21,8 @@ app.use(session({
 }))
 massive(CONNECTION_STRING).then(db => {
     app.set('db',db)
+    app.listen(SERVER_PORT,() => console.log(`Grinding on ${SERVER_PORT}`))
 })
-app.listen(SERVER_PORT,() => console.log(`Grinding on ${SERVER_PORT}`))
+//endpoints
+app.post('/controller/login',ctrl.login)
+app.post('/controller/register',ctrl.register)

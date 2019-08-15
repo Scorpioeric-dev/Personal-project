@@ -1,33 +1,48 @@
-const bcrypt = require('bcryptjs')
+const bcrypt = require("bcryptjs");
 
 module.exports = {
-    : async (req,res) => {
-        const db = req.app.get('db')
-        const {email,username,password} = req.body
-
-        const user = await db.find_email([email])
-        if(user.length . 0) {
-            return res.status(400).send({message:'Email in use'})
-        }
-        const salt = bcrypt.genSaltsync(10)
-        const has = bcrypt.hashSync(password, salt)
-        const newUser = aawait db.insert_user_info({username,email})
-        db.insert_hash({hash,user_id:newUser[0].user_id})
-        .then(() => {
-            db.create_account([newUser[0].user_id])
-            req.session.user = newUser[0]
-            res.status(200)
-            .send({
-                message:'logged in'
-                user: req.session.user,
-                loggedIn:true
-            })
-            .catch(err => {
-                res.status(500).send({message:'Failed to register'})
-            })
-        })
-
-
-
+  register: async (req, res) => {
+    const db = req.app.get("db");
+    const { email, username, password } = req.body;
+    const user = await db.find_email([email]);
+    // console.log(req.body);
+    // console.log(user);
+    if (user.length > 0) {
+      return res.status(400).send({ message: "Email in use" });
     }
-}
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+    const newUser = await db.insert_user({ username, email, hash });
+    console.log(newUser);
+    //this will remove hash from the returned data of the newUser
+    delete newUser[0].hash;
+    req.session.user = newUser[0];
+    res.status(200).send({
+      message: "logged in",
+      user: req.session.user,
+      loggedIn: true
+    });
+  },
+  login: async (req, res) => {
+    const db = req.app.get("db");
+    const { email, password } = req.body;
+    const user = await db.find_email([email]);
+    console.log(req.body)
+    if (user.length === 0) {
+      //meaning if not found return that exactly not found
+      return res.status(400).send({ message: "Email not found" });
+    }
+    const result = bcrypt.compareSync(password, user[0].hash);
+    //compareSync is a tool from the bcrypt lib. that essentially compares the password to hash within bcrypt
+    if (result) {
+      //if it matches then prior to returning user data you delete the hash specifically
+      delete user[0].hash;
+      (req.session.user = user[0])
+  
+      return(
+      res
+        .status(200)
+        .send({ message: "logged in", user: req.session.user, loggedIn: true }))
+    }
+  }
+};
