@@ -16,15 +16,15 @@ SELECT * FROM users
 WHERE email = 'eric@gmail.com';
 
 
-
+DROP TABLE video;
 CREATE TABLE video(
 video_id SERIAL PRIMARY KEY,
 user_id integer REFERENCES users(user_id),
+video_data TEXT,
 video_likes integer DEFAULT 0,
-video_date timestamp,
+video_date date not null default current_date,
 video_display boolean);
 
-
-
-SELECT * FROM video;
+INSERT INTO video(user_id,video_data,video_likes)
+VALUES(1,'https://www.youtube.com/watch?v=JF8BRvqGCNs',0);
 
