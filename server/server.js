@@ -26,3 +26,4 @@ massive(CONNECTION_STRING).then(db => {
 //endpoints
 app.post('/controller/login',ctrl.login)
 app.post('/controller/register',ctrl.register)
+app.delete('/controller/logout',ctrl.logout)

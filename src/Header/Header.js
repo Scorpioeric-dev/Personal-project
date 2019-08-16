@@ -22,7 +22,9 @@ class Header extends Component {
     });
   }
   login = () => {
-    const { emailInput: email, passwordInput: password } = this.state;
+    let { emailInput: email, passwordInput: password } = this.state;
+    email = email.toLowerCase();
+
     axios
       .post("/controller/login", { email, password })
       .then(res => {
@@ -41,31 +43,32 @@ class Header extends Component {
       <div className="Header">
         <h1>Header</h1>
         <HeaderImg />
-
-        <Link to="/UploadVid/UploadVid">
+<div className='inputs-container'>
+        <Link to="/UploadVid">
           <button onClick={this.login}>Login</button>
         </Link>
+        
+        <input
+        onChange={e => this.handleChange(e, "emailInput")}
+        type="text"
+        placeholder="email Input"
+        />
         <input
           onChange={e => this.handleChange(e, "passwordInput")}
           type="password"
           placeholder="Password"
         />
-
-        <input
-          onChange={e => this.handleChange(e, "emailInput")}
-          type="text"
-          placeholder="email Input"
-        />
+        </div>
         <input
           onChange={e => this.handleChange(e, "Search")}
           type="Text"
           placeholder="Search"
         />
         <button>Search</button>
-        <Link to="/UploadVid/UploadVid">
+        <Link to="/UploadVid">
           <button>Post Videos</button>
         </Link>
-        <Link to="/Register/Register">
+        <Link to="/Register">
           <button>Register</button>
         </Link>
       </div>

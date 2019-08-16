@@ -22,11 +22,14 @@ class Register extends Component {
     });
   }
   registerUser = () => {
-    const {
+    let {
       usernameInput: username,
       emailInput: email,
       passwordInput: password
     } = this.state;
+     username = username.toLowerCase()
+     email = email.toLowerCase()
+     console.log(username,email)
     axios
       .post("/controller/register", { username, email, password })
 
@@ -45,7 +48,7 @@ class Register extends Component {
         <h1>Register</h1>
         <input
           onChange={e => this.handleChange(e, "passwordInput")}
-          type="text"
+          type="password"
           placeholder="Password"
         />
         <input

@@ -25,5 +25,6 @@ video_date timestamp,
 video_display boolean);
 
 
+
 SELECT * FROM video;
 
