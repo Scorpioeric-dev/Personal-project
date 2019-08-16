@@ -9,6 +9,7 @@ const initialState = {
  const UPDATE_NAME = "UPDATE_NAME";
  const SET_USER = "SET_USER";
  const LOGOUT_USER = 'LOGOUT_USER'
+ const POST_VIDEO ='POST_VIDEO'
 
 //Action Builders
 export function setUser(user) {
@@ -22,6 +23,12 @@ export function logout(){
     type: LOGOUT_USER
   }
 }
+export function updateVideo(user){
+  return{
+    type:POST_VIDEO,
+    payload:user
+  }
+}
 
 //reducer
 
@@ -32,6 +39,8 @@ export default (state = initialState, action) => {
       return initialState
     case UPDATE_NAME:
       return { ...state, name: payload };
+      case POST_VIDEO:
+        return {...state,name:payload}
     default:
       return state;
   }

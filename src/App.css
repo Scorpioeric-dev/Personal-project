@@ -3,93 +3,93 @@
 }
 
 
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
 
-.logo img{
+.logo img {
   /* height: 100px;
   width: 100px;
   align-content: ;
   display:flex;
   justify-content: left; */
-  height:100px;
-  width:100px;
+  height: 100px;
+  width: 100px;
   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: flex-start;
-
-
-    
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  background-color:white;
 }
 
 .App {
-background-color:salmon;
-height:100vh;
-
-  
-
+  background-color: black;
+  height: 100vh;
 }
 #step1 {
-  object-fit:cover;
-  width:100%;
+  object-fit: cover;
+  width: 100%;
 }
 /* .my_class_name {
   margin: 0 auto;
   border: 10px outset #ddd; */
 /* } */
-.Video{
+.Video {
   background-color: salmon;
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   justify-content: space-between;
-flex-wrap: wrap;
-padding-bottom: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
 }
 
-.Video-Container{
-  /* background-color: rgb(55, 61, 61);
-  width:100%;
-  display:flex;
+.Video-Container {
+  background-color: salmon;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  margin: 30px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
-flex-wrap: wrap;
-padding-top: 20px;
- */
- display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: flex-end;
-	align-content: space-between;
+  align-items: flex-end;
+  align-content: space-between;
 }
 .Header .inputs-container {
-  
-    display: flex;
-    flex-direction:column;
-    height: 20px;
-    /* border:2px solid black; */
-    border-radius:4px;
-    width:10%;
-    align-items:center;
-    justify-content: space-between;
-    padding:3rem;
-
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  /* border:2px solid black; */
+  border-radius: 4px;
+  width: 10%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem;
 }
 
-
-
+input[type=password]{
+  width:30%;
+}
+input[type=text]{
+  width:30%;
+ 
+}
+/* .button {
+  background-color: #4CAF50; /* Green */
+  /* border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+} */ 
+.Header{
+  background-color: aquamarine;
+}

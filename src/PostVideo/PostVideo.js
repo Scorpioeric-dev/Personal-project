@@ -6,15 +6,15 @@ import {connect} from 'react-redux'
 import {logout} from '../ducks/reducer'
 import {withRouter} from 'react-router-dom'
 
-class UploadVid extends Component {
+class PostVideo extends Component {
   constructor() {
     super();
     const reduxState = store.getState();
     this.state = {
       usernameInput: reduxState.usernameInput,
-      emailInput: reduxState.emailInput
+      emailInput: reduxState.emailInput,
       // passwordInput:reduxState.passwordInput,
-      // videoInput: reduxState.videoInput
+      videoInput: reduxState.videoInput
     };
   }
 
@@ -25,8 +25,11 @@ class UploadVid extends Component {
     });
   };
 
+
+  
+
   handleChange(e, key) {
-    this.this.setState({
+    this.setState({
       [key]: e.target.value
     });
   }
@@ -35,15 +38,26 @@ class UploadVid extends Component {
     return (
       <div className="PostVid">
         <h1>Post Video</h1>
+        <div className='button1'>
+        <input
+        onChange={e => this.handleChange(e,'MyVids')}
+        type="text"
+        placeholder='video input'
+        />
 
         <Link to="/Dashboard/Dashboard">
           <button>cancel</button>
         </Link>
-
-        <Link to="/Editing/Editing">
-          <button>next</button>
-        </Link>
-        <button onClick={this.logout}></button>
+        
+        
+        
+        <button>cancel</button>
+        <button>Complete</button>
+        
+        </div>
+        
+        
+        <button onClick={this.logout}>logout</button>
       </div>
     );
   }
@@ -55,4 +69,4 @@ function mapStateToProps(reduxState){
 
 export default connect(
   mapStateToProps,{logout}
-)(withRouter(UploadVid))
+)(withRouter(PostVideo))

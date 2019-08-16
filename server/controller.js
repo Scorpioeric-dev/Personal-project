@@ -27,7 +27,7 @@ module.exports = {
     const db = req.app.get("db");
     const { email, password } = req.body;
     const user = await db.find_email([email]);
-    console.log(req.body)
+    console.log(req.body);
     if (user.length === 0) {
       //meaning if not found return that exactly not found
       return res.status(400).send({ message: "Email not found" });
@@ -37,16 +37,25 @@ module.exports = {
     if (result) {
       //if it matches then prior to returning user data you delete the hash specifically
       delete user[0].hash;
-      (req.session.user = user[0])
-  
-      return(
-      res
+      req.session.user = user[0];
+
+      return res
         .status(200)
-        .send({ message: "logged in", user: req.session.user, loggedIn: true }))
+        .send({ message: "logged in", user: req.session.user, loggedIn: true });
     }
   },
-  logout: (req,res) => {
-    req.session.destroy()
-    res.status(200).send({message:'logged out', loggedIn:false})
+  logout: (req, res) => {
+    req.session.destroy();
+    res.status(200).send({ message: "logged out", loggedIn: false });
+  },
+  postVideo: async (req, res) => {
+    const db = req.app.get("db");
+    // const { user_id } = req.session.user;
+    const { user_id, video_data, video_likes } = req.body;
+    const user = await db.insert_video({ user_id, video_data, video_likes });
+    // req.session.user = user[0]
+    // console.log(req.session.user)
+
+    return res.status(200).send(user);
   }
 };

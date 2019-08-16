@@ -61,7 +61,7 @@ class Register extends Component {
           type="text"
           placeholder="email Input"
         />
-        <Link to="/UploadVid/UpLoadVid">
+        <Link to="/PostVideo/PostVideo">
           <button onClick={this.registerUser}>Enter</button>
         </Link>
       </div>

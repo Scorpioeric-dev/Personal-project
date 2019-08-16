@@ -44,11 +44,12 @@ class Header extends Component {
         <h1>Header</h1>
         <HeaderImg />
 <div className='inputs-container'>
-        <Link to="/UploadVid">
+        <Link to="/PostVideo">
           <button onClick={this.login}>Login</button>
         </Link>
         
         <input
+        
         onChange={e => this.handleChange(e, "emailInput")}
         type="text"
         placeholder="email Input"
@@ -65,7 +66,7 @@ class Header extends Component {
           placeholder="Search"
         />
         <button>Search</button>
-        <Link to="/UploadVid">
+        <Link to="/PostVideo">
           <button>Post Videos</button>
         </Link>
         <Link to="/Register">
