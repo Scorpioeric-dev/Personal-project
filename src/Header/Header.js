@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import store from "../store";
 import { setUser } from "../ducks/reducer";
 import { connect } from "react-redux";
 import HeaderImg from "./HeaderImg";
@@ -9,18 +8,37 @@ import HeaderImg from "./HeaderImg";
 class Header extends Component {
   constructor() {
     super();
-    const reduxState = store.getState();
     this.state = {
-      usernameInput: reduxState.usernameInput,
-      emailInput: reduxState.emailInput,
-      passwordInput: reduxState.passwordInput
+      usernameInput: '',
+      emailInput: '',
+      passwordInput: '',
     };
   }
-  handleChange(e, key) {
-    this.setState({
-      [key]: e.target.value
-    });
+  componentDidMount() {
+    this.getData();
   }
+
+  getData = () => {
+    axios
+      .get("/controller/getData")
+      .then(res => {
+        let {data} = res 
+        this.props.setUser(
+          {data} 
+        );
+      })
+      .catch(err => {
+        alert(err);
+      });
+  };
+  componentDidUpdate(prevProps,prevState){
+    if(
+      prevState.videoData.length && prevState.videoData !== this.state.videoData.length
+    ){
+      this.getData()
+    }
+  }
+
   login = () => {
     let { emailInput: email, passwordInput: password } = this.state;
     email = email.toLowerCase();
@@ -36,6 +54,12 @@ class Header extends Component {
         alert("Try again.");
       });
   };
+
+  handleChange(e, key) {
+    this.setState({
+      [key]: e.target.value
+    });
+  }
   //Create search function that maps over video api data
 
   render() {
@@ -43,29 +67,30 @@ class Header extends Component {
       <div className="Header">
         <h1>Header</h1>
         <HeaderImg />
-<div className='inputs-container'>
-        <Link to="/PostVideo">
-          <button onClick={this.login}>Login</button>
-        </Link>
-        
-        <input
-        
-        onChange={e => this.handleChange(e, "emailInput")}
-        type="text"
-        placeholder="email Input"
-        />
-        <input
-          onChange={e => this.handleChange(e, "passwordInput")}
-          type="password"
-          placeholder="Password"
-        />
+        <div className="inputs-container">
+          <Link to="/PostVideo">
+            <button onClick={this.login}>Login</button>
+          </Link>
+
+          <input
+            onChange={e => this.handleChange(e, "emailInput")}
+            type="text"
+            placeholder="email Input"
+          />
+          <input
+            onChange={e => this.handleChange(e, "passwordInput")}
+            type="password"
+            placeholder="Password"
+          />
         </div>
+
         <input
+          id="search"
           onChange={e => this.handleChange(e, "Search")}
           type="Text"
           placeholder="Search"
         />
-        <button>Search</button>
+        <button onClick={this.getData}>Search</button>
         <Link to="/PostVideo">
           <button>Post Videos</button>
         </Link>
@@ -76,7 +101,12 @@ class Header extends Component {
     );
   }
 }
+
+function mapStateToProps(reduxState){
+  const {video} = reduxState
+  return {video}
+}
 export default connect(
-  null,
+  mapStateToProps,
   { setUser }
 )(Header);

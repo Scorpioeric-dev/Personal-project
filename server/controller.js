@@ -57,5 +57,10 @@ module.exports = {
     // console.log(req.session.user)
 
     return res.status(200).send(user);
+  },
+  getData: async (req,res) => {
+    const db =req.app.get('db')
+    let allVideos = await db.get_video_data()
+    res.status(200).send(allVideos)
   }
 };

@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
     case UPDATE_NAME:
       return { ...state, name: payload };
       case POST_VIDEO:
-        return {...state,name:payload}
+        return {...state,video:payload}
     default:
       return state;
   }
