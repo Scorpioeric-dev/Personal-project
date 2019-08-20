@@ -27,13 +27,13 @@ module.exports = {
     const db = req.app.get("db");
     const { email, password } = req.body;
     const user = await db.find_email([email]);
-    console.log(req.body);
     if (user.length === 0) {
       //meaning if not found return that exactly not found
       return res.status(400).send({ message: "Email not found" });
     }
     const result = bcrypt.compareSync(password, user[0].hash);
     //compareSync is a tool from the bcrypt lib. that essentially compares the password to hash within bcrypt
+    console.log(result);
     if (result) {
       //if it matches then prior to returning user data you delete the hash specifically
       delete user[0].hash;
@@ -42,6 +42,8 @@ module.exports = {
       return res
         .status(200)
         .send({ message: "logged in", user: req.session.user, loggedIn: true });
+    }else {
+      res.status(401).send('Invalid user')
     }
   },
   logout: (req, res) => {
@@ -59,8 +61,10 @@ module.exports = {
     return res.status(200).send(user);
   },
   getData: async (req,res) => {
+    console.log(req.session.user)
     const db =req.app.get('db')
-    let allVideos = await db.get_video_data()
+    let {user_id} = req.session.user
+    let allVideos = await db.get_video_data([user_id])
     res.status(200).send(allVideos)
   }
 };

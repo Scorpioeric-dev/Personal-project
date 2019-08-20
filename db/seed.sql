@@ -1,4 +1,5 @@
  DROP TABLE IF EXISTS users;
+ DROP TABLE IF EXISTS video;
 
 
 CREATE TABLE users (
@@ -27,4 +28,9 @@ video_display boolean);
 
 INSERT INTO video(user_id,video_data,video_likes)
 VALUES(1,'https://www.youtube.com/watch?v=JF8BRvqGCNs',0);
+
+
+SELECT * FROM video 
+Where user_id = 5;
+
 

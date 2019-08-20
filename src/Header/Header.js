@@ -12,6 +12,7 @@ class Header extends Component {
       usernameInput: '',
       emailInput: '',
       passwordInput: '',
+      videoData:[]
     };
   }
   componentDidMount() {
@@ -62,36 +63,53 @@ class Header extends Component {
   }
   //Create search function that maps over video api data
 
-  render() {
+render() {
+    // const video = this.state.video.map((video,id) => {
+      // const fitness = {
+      //   get_all_video:'',
+      //   get_all_data:''
+      // }
+// <link to ={`/video/${video.id}`}
+// key={ id }>
+// <h5>
+// { video.get_video_data } 
+// </h5>
+// </link>
+
+
+    // })
+
     return (
       <div className="Header">
-        <h1>Header</h1>
-        <HeaderImg />
+        <h1 id='Fitness'>J-LO Fitness</h1>
         <div className="inputs-container">
-          <Link to="/PostVideo">
-            <button onClick={this.login}>Login</button>
-          </Link>
-
-          <input
-            onChange={e => this.handleChange(e, "emailInput")}
-            type="text"
-            placeholder="email Input"
-          />
-          <input
-            onChange={e => this.handleChange(e, "passwordInput")}
-            type="password"
-            placeholder="Password"
-          />
-        </div>
-
+        <Link to="/PostVideo">
+        <button onClick={this.login}>Login</button>
+        </Link>
+        
         <input
+        onChange={e => this.handleChange(e, "emailInput")}
+        type="text"
+        placeholder="email Input"
+        />
+        <input
+        onChange={e => this.handleChange(e, "passwordInput")}
+        type="password"
+        placeholder="Password"
+        />
+        </div>
+        <HeaderImg />
+          
+          
+          <input
           id="search"
           onChange={e => this.handleChange(e, "Search")}
           type="Text"
           placeholder="Search"
-        />
-        <button onClick={this.getData}>Search</button>
-        <Link to="/PostVideo">
+          />
+          <button onClick={this.getData}>Search</button>
+       
+          <Link to="/PostVideo">
           <button>Post Videos</button>
         </Link>
         <Link to="/Register">

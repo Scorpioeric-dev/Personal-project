@@ -5,7 +5,7 @@ import React from 'react'
 export default function logo(){
     return(
         <div className='logo'>
-        <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKPT-aFnaVpdy9C4fZR-0lJgZZPOXB-kiJrRuRHe7s3p35cT2_" alt= ""   />
+        <img  src="https://cdn.pixabay.com/photo/2017/04/27/08/29/sport-2264825__340.jpg" alt= ""   />
         </div>
     )
 }

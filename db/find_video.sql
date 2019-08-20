@@ -1,2 +1,2 @@
 SELECT * FROM users
-WHERE video = $1;
+WHERE video_data = $1;

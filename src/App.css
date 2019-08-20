@@ -4,7 +4,7 @@
 
 
 .App-link {
-  color: #61dafb;
+  color: red;
 }
 
 .logo img {
@@ -13,8 +13,8 @@
   align-content: ;
   display:flex;
   justify-content: left; */
-  height: 100px;
-  width: 100px;
+  height: 20vh;
+  width: 25vw;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -30,14 +30,14 @@
 }
 #step1 {
   object-fit: cover;
-  width: 100%;
+  width: 50%;
 }
 /* .my_class_name {
   margin: 0 auto;
   border: 10px outset #ddd; */
 /* } */
 .Video {
-  background-color:black;
+  background-color:grey;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -46,7 +46,7 @@
 }
 
 .Video-Container {
-  background-color: black;
+  background-color: grey(212, 21, 21);
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -64,8 +64,8 @@
   .Header .inputs-container {
   display: flex;
   flex-direction: column;
-  height: 20px;
-   border:2px solid black; 
+  height: 30px;
+   border:2px solid rgb(73, 71, 71); 
    border-radius: 4px;
   width: 5%;
   align-items: center;
@@ -82,12 +82,15 @@ input[type=text]{
 }
 
 .Header{
-  background-color: pink;
-height: 20vh;
+  background-color:grey;
+  flex-direction: row;
+  height: 22%;
   width:100vw;
-  position:relative;
+  position:left;
   display:flex;
-  justify-content: space-between;
+  justify-content:space-between;
+  margin:0;
+  
 
 }
 .my_class_name {
@@ -99,5 +102,18 @@ height: 20vh;
   background-color: white;
   height: 20px;
   width:10vw;
-  color:black;
+  color:blue;
 }
+.button1{
+  border:grey;
+  height: 100vh;
+}
+/* #fitness:hover{
+  transform: rotate(360deg);
+  transition: all 0.2s ease-in-out 0s;
+} */
+
+
+
+
+  

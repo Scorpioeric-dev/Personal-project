@@ -1,3 +1,3 @@
 INSERT INTO users(username,email,hash)
-VALUES(${username},${email},${hash})
-RETURNING *;
+VALUES(${username},${email},${hash});
+-- RETURNING *;

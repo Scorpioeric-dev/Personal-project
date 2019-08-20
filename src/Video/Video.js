@@ -8,19 +8,18 @@ class Video extends Component {
         <div className="Video-Container">
           <ReactPlayer
             
-            url="https://www.youtube.com/watch?v=lWA2pjMjpBs"
+            url="https://www.youtube.com/watch?v=slNA1zsY-E4"
             playing
             controls
             class="my_class_name"
             width="640"
-            height="460"
+            height="560"
             frameborder="0"
             allowfullscreen
           />
           <ReactPlayer
-            width="500px"
-            height="200px"
-            url="https://www.youtube.com/watch?v=LdH7aFjDzjI"
+           
+            url="https://www.youtube.com/watch?v=7rcMzc7r8mU"
             playing
             controls
             class="my_class_name"
@@ -32,9 +31,8 @@ class Video extends Component {
         </div>
 
         <ReactPlayer
-          width="500px"
-          height="200px"
-          url="https://www.youtube.com/watch?v=lWA2pjMjpBs"
+         
+          url="https://www.youtube.com/watch?v=--QTFD23mWw"
           playing
           controls
           class="my_class_name"
@@ -45,9 +43,8 @@ class Video extends Component {
         />
 
         <ReactPlayer
-          width="500px"
-          height="200px"
-          url="https://www.youtube.com/watch?v=lWA2pjMjpBs"
+         
+          url="https://www.youtube.com/watch?v=LvsfVyJo194"
           playing
           controls
           class="my_class_name"
